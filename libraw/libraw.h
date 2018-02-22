@@ -207,7 +207,7 @@ public:
 
   int COLOR(int row, int col)
   {
-    return libraw_internal_data.internal_output_params.fuji_width ? FCF(row, col) : FC(row, col);
+    return imgdata.idata.filters < 1000 ? fcol(row,col): (libraw_internal_data.internal_output_params.fuji_width ? FCF(row, col) : FC(row, col));
   }
 
   int FC(int row, int col) { return (imgdata.idata.filters >> (((row << 1 & 14) | (col & 1)) << 1) & 3); }
